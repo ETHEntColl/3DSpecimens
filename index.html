@@ -87,17 +87,19 @@
     </div>
 
     <script>
-        // Array of objects containing URLs and thumbnail filenames
-        const items = [
-            { url: 'https://tinyglb.com/viewer/010f6b7b08534d11b3302edb180079e0', thumb: 'assets/thumb1.png' },
-            { url: 'https://tinyglb.com/viewer/907288ad304f491a9da9cc1df71cc23a', thumb: 'assets/thumb2.png' },
-            { url: 'https://tinyglb.com/viewer/7a3d5b51e98749b48d43bab53e2ef1ad', thumb: 'assets/thumb3.png' },
-            { url: 'https://tinyglb.com/viewer/dafde7bf92db4d8cb165f3f884936c5a', thumb: 'assets/thumb4.png' }, 
-            { url: 'https://tinyglb.com/viewer/f2a9b5478cac4e38b69044db9a96db78', thumb: 'assets/thumb5.png' }, 
-            { url: 'https://tinyglb.com/viewer/186716d9173943269fe4685048e0e48b', thumb: 'assets/thumb6.png' }, 
-            { url: 'https://tinyglb.com/viewer/bef800bc77784f5a84d66cebf7142aa8', thumb: 'assets/thumb7.png' }, 
-            { url: 'https://tinyglb.com/viewer/f0c24e67a7de4c3f985c00d9ba67c42c', thumb: 'assets/thumb8.png' }, 
-            { url: 'https://tinyglb.com/viewer/c01c0017837e47e1a7d45a5cced55af8', thumb: 'assets/thumb9.png' }, // Add more items as needed
+        // Array of UIDs only
+        const uids = [
+            '010f6b7b08534d11b3302edb180079e0',
+            '907288ad304f491a9da9cc1df71cc23a',
+            '7a3d5b51e98749b48d43bab53e2ef1ad',
+            'dafde7bf92db4d8cb165f3f884936c5a',
+            'f2a9b5478cac4e38b69044db9a96db78',
+            '186716d9173943269fe4685048e0e48b',
+            'bef800bc77784f5a84d66cebf7142aa8',
+            'f0c24e67a7de4c3f985c00d9ba67c42c',
+            'c01c0017837e47e1a7d45a5cced55af8',
+            'b31b83e6b05f4f7ba72403eeb013aafd',
+            '207e074e263b4b2d8a178fee1d27855a',
         ];
 
         // Function to change the iframe source
@@ -105,26 +107,25 @@
             document.getElementById('main-iframe').src = url; // Update the iframe source
         }
 
-        // Populate the thumbnails dynamically
+        // Populate the thumbnails dynamically using UIDs
         const thumbnailsContainer = document.getElementById('thumbnails');
-        items.forEach(item => {
+        uids.forEach(uid => {
             const thumbnailDiv = document.createElement('div');
             thumbnailDiv.className = 'thumbnail';
-            thumbnailDiv.onclick = () => changeIframe(item.url);
+            thumbnailDiv.onclick = () => changeIframe(`https://tinyglb.com/viewer/${uid}`);
 
             const img = document.createElement('img');
-            img.src = item.thumb;
-            img.alt = `Thumbnail for ${item.url}`;
+            img.src = `https://cdn.tinyglb.com/posters/${uid}.webp`;
+            img.alt = `Thumbnail for ${uid}`;
 
             thumbnailDiv.appendChild(img);
             thumbnailsContainer.appendChild(thumbnailDiv);
         });
 
         // Enable horizontal scrolling on mouse wheel
-        const thumbnails = document.getElementById('thumbnails');
-        thumbnails.addEventListener('wheel', (event) => {
+        thumbnailsContainer.addEventListener('wheel', (event) => {
             event.preventDefault(); // Prevent the default vertical scrolling
-            thumbnails.scrollLeft += event.deltaY; // Scroll horizontally based on the vertical scroll amount
+            thumbnailsContainer.scrollLeft += event.deltaY; // Scroll horizontally based on the vertical scroll amount
         });
     </script>
 </body>
