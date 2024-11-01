@@ -18,12 +18,16 @@ html, body {
 /* Title styling */
 .title {
     position: absolute;
-    top: 20px;
-    left: 30px;
+    top: 1em;   /* Set top space relative to font size */
+    left: 1em;  /* Set left space relative to font size */
     font-family: Helvetica, Arial, sans-serif;
     font-size: 3vh;
     color: #333;
-    z-index: 10; /* Ensure title stays on top */
+    z-index: 10;
+}
+
+.bold-text {
+    font-weight: bold;
 }
 
 /* Sub-link styling */
@@ -86,4 +90,17 @@ html, body {
 .thumbnail img {
     height: 10vh; /* Thumbnail height */
     width: auto; /* Maintain aspect ratio */
+}
+
+.footer {
+    position: relative; /* Position it relative to its container */
+    text-align: center; /* Center the text */
+    font-family: Helvetica, Arial, sans-serif; /* Match the title font */
+    font-size: 1.5vh; /* Responsive font size */
+    color: #333; /* Matching color to the title */
+    padding: 0px 0; /* Add some padding for spacing */
+    background-color: #f8f8f8; /* Light background for visibility */
+    width: 100%; /* Full width */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    bottom: 0; /* Stick to the bottom */
 }
