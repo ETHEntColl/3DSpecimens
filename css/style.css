@@ -1,0 +1,89 @@
+/* Set full height for the page */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Main container to hold title, iframe, and thumbnails */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+    width: 100%;
+    position: relative; /* Position relative to place title */
+}
+
+/* Title styling */
+.title {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 3vh;
+    color: #333;
+    z-index: 10; /* Ensure title stays on top */
+}
+
+/* Sub-link styling */
+.title a {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+/* Iframe container */
+.iframe-container {
+    flex-grow: 1; /* Allows the iframe container to grow and fill available space */
+    width: 100%;
+}
+
+/* Iframe with full width and height */
+#main-iframe {
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Thumbnails container */
+.thumbnails {
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    padding: 10px;
+    background-color: #dbdbdb;
+    flex-shrink: 0;
+    justify-content: center; /* Center the thumbnails */
+    align-items: center; /* Align thumbnails vertically in the center */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #ccc transparent; /* For Firefox */
+}
+
+/* Styling for the scrollbar in WebKit browsers */
+.thumbnails::-webkit-scrollbar {
+    height: 0.75vh; /* Set scrollbar height */
+}
+.thumbnails::-webkit-scrollbar-thumb {
+    background: #585858; /* Scrollbar color */
+    border-radius: 10px; /* Round edges */
+}
+.thumbnails::-webkit-scrollbar-track {
+    background: #a5a5a5bb; /* Track color */
+}
+
+/* Individual thumbnail styling */
+.thumbnail {
+    cursor: pointer;
+    border: 5px solid #ccc;
+    padding: 0;
+    margin: 0 5px; /* Margin to create space between thumbnails */
+    flex: 0 0 auto; /* Prevent the thumbnail from shrinking */
+}
+
+/* Adjustable thumbnail image size */
+.thumbnail img {
+    height: 10vh; /* Thumbnail height */
+    width: auto; /* Maintain aspect ratio */
+}
