@@ -56,13 +56,22 @@ html, body {
 .thumbnails {
     display: flex;
     overflow-x: auto; /* Allow horizontal scrolling */
-    padding: 10px;
+    padding: 10px; /* Padding to create space around */
     background-color: #dbdbdb;
     flex-shrink: 0;
-    justify-content: center; /* Center the thumbnails */
+    justify-content: flex-start; /* Align thumbnails to the start */
     align-items: center; /* Align thumbnails vertically in the center */
     scrollbar-width: thin; /* For Firefox */
     scrollbar-color: #ccc transparent; /* For Firefox */
+}
+
+/* Individual thumbnail styling */
+.thumbnail {
+    cursor: pointer;
+    border: 0.5vh solid #ccc;
+    padding: 0;
+    margin: 0 0.5vh; /* Margin to create space between thumbnails */
+    flex: 0 0 auto; /* Prevent the thumbnail from shrinking */
 }
 
 /* Styling for the scrollbar in WebKit browsers */
@@ -71,19 +80,10 @@ html, body {
 }
 .thumbnails::-webkit-scrollbar-thumb {
     background: #585858; /* Scrollbar color */
-    border-radius: 10px; /* Round edges */
+    border-radius: 0.75vh; /* Round edges */
 }
 .thumbnails::-webkit-scrollbar-track {
     background: #a5a5a5bb; /* Track color */
-}
-
-/* Individual thumbnail styling */
-.thumbnail {
-    cursor: pointer;
-    border: 5px solid #ccc;
-    padding: 0;
-    margin: 0 5px; /* Margin to create space between thumbnails */
-    flex: 0 0 auto; /* Prevent the thumbnail from shrinking */
 }
 
 /* Adjustable thumbnail image size */
