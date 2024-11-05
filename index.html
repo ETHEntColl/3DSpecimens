@@ -18,7 +18,8 @@
     <div class="container">
         <!-- Title for the collection -->
         <div class="title">
-            <span class="bold-text">ETH Zürich</span> Entomological Collection
+            <!-- Entomological Collection<br> <span class="bold-text">ETH Zürich</span> -->
+            <span class="bold-text">Entomological Collection</span><br> ETH Zürich
             <!-- <a href="page1.html">More Specimens</a> -->
         </div>
 
@@ -89,6 +90,24 @@
             event.preventDefault(); // Prevent the default vertical scrolling
             thumbnailsContainer.scrollLeft += event.deltaY; // Scroll horizontally based on the vertical scroll amount
         });
+
+        function adjustThumbnailAlignment() {
+            const thumbnailsContainer = document.getElementById('thumbnails');
+            const totalThumbnailWidth = Array.from(thumbnailsContainer.children).reduce((total, thumb) => {
+                return total + thumb.offsetWidth + parseFloat(getComputedStyle(thumb).marginRight);
+            }, 0);
+
+            if (totalThumbnailWidth < window.innerWidth) {
+                thumbnailsContainer.style.justifyContent = 'center';
+            } else {
+                thumbnailsContainer.style.justifyContent = 'flex-start';
+            }
+        }
+
+        // Call the function on initial load and when the window resizes
+        window.addEventListener('load', adjustThumbnailAlignment);
+        window.addEventListener('resize', adjustThumbnailAlignment);
+
     </script>
 </body>
 </html>
