@@ -6,27 +6,42 @@
   <title>3D Cube Model Viewer</title>
   <!-- Load Google Model Viewer Library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    model-viewer {
+    /* Remove default margin and padding, and make html and body fill the screen */
+    html, body {
+      margin: 0;
+      padding: 0;
       width: 100%;
-      max-width: 12000px;
-      height: 800px;
-      background-color: #ffffff;
-      margin: 0 auto;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* Make the model-viewer take the full viewport width and height */
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+      background-color: #eee;
       display: block;
     }
   </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Title for the collection -->
+        <div class="title">
+            <!-- Entomological Collection<br> <span class="bold-text">ETH Zürich</span> -->
+            <span class="bold-text">Entomological Collection</span><br> ETH Zürich
+            <!-- <a href="page1.html">More Specimens</a> -->
+        </div>
 
-  <h2>3D Cube Model</h2>
-  <model-viewer 
-    src="assets/cube.glb" 
-    alt="3D Cube Model" 
-    auto-rotate 
-    camera-controls 
-    ar>
-  </model-viewer>
-
+        <!-- Iframe container -->
+        <model-viewer 
+            src="assets/cube.glb" 
+            alt="3D Cube Model" 
+            auto-rotate 
+            camera-controls 
+            ar>
+        </model-viewer>
+    </div>
 </body>
 </html>
