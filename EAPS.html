@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D Model Viewer</title>
+    <!-- Import the model-viewer library -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+      /* Optional: Set a fixed size for the model-viewer element */
+      model-viewer {
+        width: 600px;
+        height: 400px;
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Model Viewer Element -->
+    <model-viewer
+      src="https://drive.google.com/uc?export=download&id=1-72fUb2G_4mHoBsQN1pCpb0N1_WxwmmR"
+      alt="A 3D model"
+      auto-rotate
+      camera-controls
+      ar
+    >
+    </model-viewer>
+  </body>
+</html>
