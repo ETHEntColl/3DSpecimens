@@ -6,7 +6,6 @@
   <title>3D Cube Model Viewer</title>
   <!-- Load Google Model Viewer Library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <link rel="stylesheet" href="css/style.css">
   <style>
     /* Remove default margin and padding, and make html and body fill the screen */
     html, body {
@@ -26,22 +25,12 @@
   </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Title for the collection -->
-        <div class="title">
-            <!-- Entomological Collection<br> <span class="bold-text">ETH Zürich</span> -->
-            <span class="bold-text">Entomological Collection</span><br> ETH Zürich
-            <!-- <a href="page1.html">More Specimens</a> -->
-        </div>
-
-        <!-- Iframe container -->
-        <model-viewer 
-            src="assets/cube.glb" 
-            alt="3D Cube Model" 
-            auto-rotate 
-            camera-controls 
-            ar>
-        </model-viewer>
-    </div>
+    <model-viewer 
+    src="assets/cube.glb" 
+    alt="3D Cube Model" 
+    auto-rotate 
+    camera-controls 
+    ar>
+    </model-viewer>
 </body>
 </html>
