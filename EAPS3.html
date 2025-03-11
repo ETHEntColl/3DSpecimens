@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Cube Model Viewer</title>
+  <!-- Load Google Model Viewer Library -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    /* Remove default margin and padding, and make html and body fill the screen */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* Make the model-viewer take the full viewport width and height */
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+      background-color: #eee;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <model-viewer
+    id="shoe"
+    camera-controls touch-action="pan-y" camera-orbit="90deg 90deg 100m"
+    src="assets/01.glb" 
+    alt="3D Cube Model" 
+    camera-controls 
+    ar>
+    <div class="controls glass">
+      <div>Variant: <select id="variant"></select></div>
+    </div>
+  </model-viewer>
+  <script>
+    const modelViewerVariants = document.querySelector("model-viewer#shoe");
+    const select = document.querySelector('#variant');
+
+    modelViewerVariants.addEventListener('load', () => {
+      const names = modelViewerVariants.availableVariants;
+      for (const name of names) {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+      }
+      // Adds a default option.
+      const option = document.createElement('option');
+      option.value = 'default';
+      option.textContent = 'Default';
+      select.appendChild(option);
+    });
+
+    select.addEventListener('input', (event) => {
+      modelViewerVariants.variantName = event.target.value === 'default' ? null : event.target.value;
+    });
+    </model-viewer>
+</body>
+</html>
