@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Specimens</title>
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Title for the collection -->
+        <div class="title">
+            <!-- Entomological Collection<br> <span class="bold-text">ETH Zürich</span> -->
+            <span class="bold-text">Best Collection</span><br> 3D SPECIMENS
+            <!-- <a href="page1.html">More Specimens</a> -->
+        </div>
+
+        <!-- Iframe container -->
+        <div class="iframe-container" id="iframe-container">
+            <iframe id="main-iframe"></iframe>
+        </div>
+        
+        <!-- Thumbnails row -->
+        <div class="thumbnails" id="thumbnails"></div>
+
+        <!-- <footer class="footer">
+            <p><span class="bold-text">Credits:</span> Michael, Christian, Silvan, Fabian & Dustin</p>
+        </footer> -->
+    </div>
+
+    <script>
+        // Array of UIDs only
+        const uids = [
+            '907288ad304f491a9da9cc1df71cc23a',
+            '21eef04e59a64293813467697aa1ae43',
+            '3e87534c26f144fd9db95c200fda5532',
+            '794485a617f449aabbd171e85578fc7d',
+            '24c668d816e04d5f937154797b3c3974',
+        ];
+
+        // Function to change the iframe source
+        function changeIframe(url) {
+            document.getElementById('main-iframe').src = url; // Update the iframe source
+        }
+
+        // Populate the thumbnails dynamically using UIDs
+        const thumbnailsContainer = document.getElementById('thumbnails');
+        uids.forEach((uid, index) => {
+            const thumbnailDiv = document.createElement('div');
+            thumbnailDiv.className = 'thumbnail';
+            thumbnailDiv.onclick = () => changeIframe(`https://tinyglb.com/viewer/${uid}`);
+
+            const img = document.createElement('img');
+            img.src = `https://cdn.tinyglb.com/posters/${uid}.webp`;
+            img.alt = `Thumbnail for ${uid}`;
+
+            // Only append the thumbnail if the image loads successfully
+            img.onload = () => {
+                thumbnailDiv.appendChild(img);
+                thumbnailsContainer.appendChild(thumbnailDiv);
+
+                // If this is the first thumbnail, load its URL in the iframe
+                if (index === 0) {
+                    changeIframe(`https://tinyglb.com/viewer/${uid}`);
+                }
+            };
+            
+            // If the image fails to load, it won't be added to the DOM
+            img.onerror = () => {
+                console.warn(`Image not found for UID: ${uid}`);
+            };
+        });
+
+        // Enable horizontal scrolling on mouse wheel
+        thumbnailsContainer.addEventListener('wheel', (event) => {
+            event.preventDefault(); // Prevent the default vertical scrolling
+            thumbnailsContainer.scrollLeft += event.deltaY; // Scroll horizontally based on the vertical scroll amount
+        });
+
+        function adjustThumbnailAlignment() {
+            const thumbnailsContainer = document.getElementById('thumbnails');
+            const totalThumbnailWidth = Array.from(thumbnailsContainer.children).reduce((total, thumb) => {
+                return total + thumb.offsetWidth + parseFloat(getComputedStyle(thumb).marginRight);
+            }, 0);
+
+            if (totalThumbnailWidth < window.innerWidth) {
+                thumbnailsContainer.style.justifyContent = 'center';
+            } else {
+                thumbnailsContainer.style.justifyContent = 'flex-start';
+            }
+        }
+
+        // Call the function on initial load and when the window resizes
+        window.addEventListener('load', adjustThumbnailAlignment);
+        window.addEventListener('resize', adjustThumbnailAlignment);
+
+    </script>
+</body>
+</html>
