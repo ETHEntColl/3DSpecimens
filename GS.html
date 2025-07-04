@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polycam Fullscreen Embed</title>
+    <style>
+        /* Ensure html and body occupy full viewport with no margins */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        /* Make the iframe fill the entire viewport */
+        iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe 
+        src="https://poly.cam/capture/27843d14-1513-49a4-baa0-aaf9a743e231/embed"
+        title="Polycam capture viewer"
+        allowfullscreen
+    ></iframe>
+</body>
+</html>
