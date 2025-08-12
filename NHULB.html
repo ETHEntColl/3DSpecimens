@@ -11,6 +11,7 @@
         --text: #2a2a2a;
         --muted: #666c75;
         --border: #d1d5db;
+        --accent: #2563eb;
       }
       html, body {
         margin: 0; padding: 0; height: 100%;
@@ -28,9 +29,26 @@
         border-radius: 14px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
       }
-      .frame { width: 100%; height: 600px; display: block; background: #f0f0f2; }
+      .frame { width: 100%; height: 600px; background: #f0f0f2; border: 0; }
       .caption { padding: 12px 14px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
+      .btn {
+        display: inline-block;
+        margin: 10px 14px;
+        padding: 8px 16px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+      }
+      .btn:hover {
+        background: #1d4ed8;
+      }
       @media (max-width: 980px) {
         .grid { grid-template-columns: 1fr; }
         .frame { height: 420px; }
@@ -47,13 +65,15 @@
       <section class="grid">
         <!-- Frame 01 -->
         <article class="card">
-          <iframe class="frame" src="NHULB-Viewer.html" title="Photogrammetry Viewer" style="border:0;" allowfullscreen></iframe>
-          <div class="caption">ULB Viewer: The viewer provides a synchronized display between a 3D model and its corresponding image, enabling side-by-side interaction and analysis. </div>
+          <iframe class="frame" src="https://ethentcoll.github.io/3DSpecimens/NHULB-Viewer" title="Photogrammetry Viewer" allowfullscreen></iframe>
+          <a href="https://ethentcoll.github.io/3DSpecimens/NHULB-Viewer" target="_blank" class="btn">View Fullscreen</a>
+          <div class="caption">ULB Viewer: The viewer provides a synchronized display between a 3D model and its corresponding image, enabling side-by-side interaction and analysis.</div>
         </article>
 
         <!-- Frame 02 -->
         <article class="card">
-          <iframe class="frame" src="https://tinyglb.com/viewer/572d7e823ca7411eb1a151c00a5bab56" title="GLB Viewer" style="border:0;" allowfullscreen></iframe>
+          <iframe class="frame" src="https://tinyglb.com/viewer/572d7e823ca7411eb1a151c00a5bab56" title="GLB Viewer" allowfullscreen></iframe>
+          <a href="https://tinyglb.com/viewer/572d7e823ca7411eb1a151c00a5bab56" target="_blank" class="btn">View Fullscreen</a>
           <div class="caption">Google Model Viewer: A basic 3D viewer without additional functionality, but with HDR integration for enhanced lighting and realism.</div>
         </article>
       </section>
