@@ -1,13 +1,16 @@
+<!doctype html>
 <html>
   <head>
-    <meta charset=“ISO-8859-1”>
-    <script src=“assets/Mollusk/photogrammetry-viewer.js” type=“module”></script>
+    <meta charset="utf-8" />
+    <!-- Serve this over http(s), not file:// -->
+    <script src="assets/Mollusk/photogrammetry-viewer.js" type="module"></script>
   </head>
   <body>
-    <photogrammetry-viewer isYupTransformApplied
-      srcScanInformation=‘assets/Mollusk/cameras.xml’
-      src3D=‘assets/Mollusk/Mollusk.glb’
-      src2D=‘assets/Mollusk/redof/’>
+    <photogrammetry-viewer
+      is-yup-transform-applied
+      src-scan-information="assets/Mollusk/cameras.xml"
+      src-3d="assets/Mollusk/Mollusk.glb"
+      src-2d="assets/Mollusk/redof/">
     </photogrammetry-viewer>
   </body>
 </html>
